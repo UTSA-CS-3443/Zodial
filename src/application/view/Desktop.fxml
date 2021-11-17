@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.DesktopController">
+   <children>
+      <ScrollPane layoutX="306.0" layoutY="172.0" prefHeight="617.0" prefWidth="485.0">
+         <content>
+            <VBox fx:id="eventBox" prefHeight="614.0" prefWidth="473.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="logoutButton" layoutX="716.0" layoutY="31.0" mnemonicParsing="false" text="Log Out" />
+      <Button fx:id="testButton" layoutX="601.0" layoutY="31.0" mnemonicParsing="false" onAction="#addEvent" text="Add Event" />
+      <ImageView fx:id="profilePic" fitHeight="231.0" fitWidth="241.0" layoutX="41.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../data/blank-profile-picture-973460_1280.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
