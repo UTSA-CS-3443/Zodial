@@ -63,6 +63,9 @@ public class EventList {
 		userEvents.remove(index);
 		addEventListToFile(filename);
 	}
+	/*
+	 * 
+	 */
 	public void addEventListToFile(String filename) {
 		try{
 			FileWriter fw = new FileWriter(filename,true);

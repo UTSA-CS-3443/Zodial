@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.LoginController">
+   <children>
+      <Label layoutX="389.0" layoutY="110.0" prefHeight="68.0" prefWidth="193.0" text="zodial.">
+         <font>
+            <Font name="Dubai Regular" size="74.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="139.0" fitWidth="131.0" layoutX="231.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../data/logo.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f2f2f" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
+      <ImageView fitHeight="52.0" fitWidth="46.0" layoutX="23.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../data/logo.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="signupPrompt" prefHeight="800.0" prefWidth="800.0">
+         <children>
+            <Rectangle fx:id="promptBox1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="366.0" layoutX="253.0" layoutY="285.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" width="294.0" />
+            <Rectangle fx:id="promptBar1" arcHeight="5.0" arcWidth="5.0" fill="#2f2f2f" height="60.0" layoutX="251.0" layoutY="283.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="298.0" />
+            <Circle fx:id="personBackground1" fill="#2f2f2f" layoutX="401.0" layoutY="325.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <ImageView fx:id="personIcon1" fitHeight="81.0" fitWidth="78.0" layoutX="362.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../data/personIcon.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="signupEmailField" layoutX="282.0" layoutY="393.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="Email">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Button fx:id="loginButton2" layoutX="418.0" layoutY="626.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="112.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Sign up">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="signupMainPasswordField" layoutX="282.0" layoutY="468.0" prefHeight="46.0" prefWidth="237.0" promptText="Password">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="5.0" />
+               </opaqueInsets>
+            </PasswordField>
+            <PasswordField fx:id="signupSubPasswordField" layoutX="282.0" layoutY="541.0" prefHeight="46.0" prefWidth="237.0" promptText="Confirm Password">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="5.0" />
+               </opaqueInsets>
+            </PasswordField>
+            <Button fx:id="loginButton21" layoutX="272.0" layoutY="626.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="112.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Return">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="loginPrompt" prefHeight="800.0" prefWidth="800.0">
+         <children>
+            <PasswordField fx:id="loginPasswordField" layoutX="283.0" layoutY="495.0" prefHeight="46.0" prefWidth="237.0" promptText="Password">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="5.0" />
+               </opaqueInsets>
+            </PasswordField>
+            <TextField fx:id="loginEmailField" layoutX="283.0" layoutY="408.0" prefHeight="46.0" prefWidth="237.0" promptText="Email">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Rectangle fx:id="promptBar" arcHeight="5.0" arcWidth="5.0" fill="#2f2f2f" height="60.0" layoutX="252.0" layoutY="282.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="298.0" />
+            <Circle fx:id="personBackground" fill="#2f2f2f" layoutX="401.0" layoutY="324.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <ImageView fx:id="personIcon" fitHeight="81.0" fitWidth="78.0" layoutX="361.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../data/personIcon.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="promptBox" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="366.0" layoutX="254.0" layoutY="284.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" width="294.0" />
+            <Button fx:id="loginButton211" layoutX="272.0" layoutY="627.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="112.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Return">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="loginButton212" layoutX="418.0" layoutY="626.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="112.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Login">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainPage" prefHeight="800.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="loginPromptButton" layoutX="311.0" layoutY="361.0" mnemonicParsing="false" onAction="#handle" prefHeight="78.0" prefWidth="193.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Login">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="signupPromptButton" layoutX="311.0" layoutY="472.0" mnemonicParsing="false" onAction="#handle" prefHeight="78.0" prefWidth="193.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Sign up">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

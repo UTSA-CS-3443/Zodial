@@ -22,9 +22,7 @@ public class Event {
 		
 		@Override
 		public String toString() {
-			return "Event [Title=" + title + ", Descript=" + descript + ", date=" + date + ", Time=" + time + ", local="
-					+ local + ", getTitle()=" + getTitle() + ", getDescript()=" + getDescript() + ", getDate()=" + getDate()
-					+ ", getTime()=" + getTime() + ", getLocal()=" + getLocal() + "]";
+			return this.getTitle() + "\n" + this.getDate() + "  " + this.getTime() + "\n" + this.getDescript();
 		}
 
 		public String getTitle() {
