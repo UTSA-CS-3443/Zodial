@@ -13,20 +13,6 @@ public class EventList {
 		userEvents = new ArrayList<Event>();
 		//need to add user field
 		}
-
-	/**
-	 * @return the userEvents
-	 */
-	public ArrayList<Event> getUserEvents() {
-		return userEvents;
-	}
-
-	/**
-	 * @param userEvents the userEvents to set
-	 */
-	public void setUserEvents(ArrayList<Event> userEvents) {
-		this.userEvents = userEvents;
-	}
 	public void readEventList(String filename) {
 		try {
 			File file = new File(filename);
@@ -43,32 +29,12 @@ public class EventList {
 			e.printStackTrace();
 		}
 	}
-	public String toString() {
-		String str = "";
-		for(int i = 0;i < userEvents.size();i++) {
-			str += userEvents.get(i);
-		}
-		return str;
-	}
-	public Event getEvent(int index) {
-		return userEvents.get(index);
-	}
-	public int getSize() {
-		return userEvents.size();
-	}
-	public void addEvent() {
-		//TODO add method to add event and add it to file;
-	}
-	public void removeEvent(int index, String filename) {
-		userEvents.remove(index);
-		addEventListToFile(filename);
-	}
-	/*
-	 * 
+	/**
+	 * @param filename
 	 */
 	public void addEventListToFile(String filename) {
 		try{
-			FileWriter fw = new FileWriter(filename,true);
+			FileWriter fw = new FileWriter(filename, false);
 			for(int i = 0;i < userEvents.size();i++) {
 				fw.write( this.userEvents.get(i).getTitle() + "," + this.userEvents.get(i).getDescript() + "," + this.userEvents.get(i).getDate() + "," + this.userEvents.get(i).getTime() + "," + this.userEvents.get(i).getLocal() + "\n");
 			}
@@ -77,5 +43,46 @@ public class EventList {
 			catch( IOException e) {
 				e.printStackTrace();
 			}
+	}
+	/**
+	 * @param index
+	 * @param filename
+	 */
+	public void removeEvent(int index, String filename) {
+		userEvents.remove(index);
+		addEventListToFile(filename);
+	}
+	/**
+	 * @return the userEvents
+	 */
+	public ArrayList<Event> getUserEvents() {
+		return userEvents;
+	}
+
+	/**
+	 * @param userEvents the userEvents to set
+	 */
+	public void setUserEvents(ArrayList<Event> userEvents) {
+		this.userEvents = userEvents;
+	}
+	/**
+	 * @param index
+	 * @return an Event at that index
+	 */
+	public Event getEvent(int index) {
+		return userEvents.get(index);
+	}
+	/**
+	 * @return an int of the size of the userEvents
+	 */
+	public int size() {
+		return userEvents.size();
+	}
+	public String toString() {
+		String str = "";
+		for(int i = 0;i < userEvents.size();i++) {
+			 str += userEvents.get(i);
+		}
+		return str;
 	}
 }

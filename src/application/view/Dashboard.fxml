@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -15,18 +16,24 @@
             <Image url="@../../../data/logo.png" />
          </image>
       </ImageView>
-      <ScrollPane layoutX="306.0" layoutY="172.0" prefHeight="617.0" prefWidth="485.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="306.0" layoutY="172.0" prefHeight="617.0" prefWidth="485.0">
          <content>
-            <VBox fx:id="eventBox" prefHeight="614.0" prefWidth="473.0" />
+            <VBox fx:id="eventBox" prefHeight="614.0" prefWidth="473.0" style="-fx-border-color: #000000;" />
          </content>
       </ScrollPane>
-      <Button fx:id="logoutButton" layoutX="714.0" layoutY="118.0" mnemonicParsing="false" onAction="#logout" text="Log Out" />
-      <Button fx:id="testButton" layoutX="600.0" layoutY="118.0" mnemonicParsing="false" onAction="#addEvent" text="Add Event" />
-      <ImageView fx:id="profilePic" fitHeight="231.0" fitWidth="241.0" layoutX="41.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="logoutButton" layoutX="714.0" layoutY="118.0" mnemonicParsing="false" onAction="#logout" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Log Out">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="testButton" layoutX="600.0" layoutY="118.0" mnemonicParsing="false" onAction="#addEvent" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-background-color: #fdaf14; -fx-border-color: #000000;" text="Add Event">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <ImageView fx:id="profilePic" fitHeight="231.0" fitWidth="241.0" layoutX="41.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../data/blank-profile-picture-973460_1280.png" />
          </image>
       </ImageView>
-      <Label fx:id="userLabel" contentDisplay="CENTER" layoutX="86.0" layoutY="427.0" prefHeight="17.0" prefWidth="142.0" text="username" />
+      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="TOP" layoutX="86.0" layoutY="427.0" prefHeight="17.0" prefWidth="142.0" style="-fx-background-color: #fdaf14; -fx-border-color: #000000; -fx-border-width: 2;" text="username@gmail.com" />
    </children>
 </AnchorPane>
