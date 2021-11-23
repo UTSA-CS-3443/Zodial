@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-18.0" layoutY="-8.0" prefHeight="769.0" prefWidth="1132.0">
+         <children>
+            <DatePicker layoutX="348.0" layoutY="255.0" />
+            <Label layoutX="109.0" layoutY="255.0" text="Enter Date" />
+            <Label layoutX="109.0" layoutY="149.0" text="Event Name" />
+            <TextField layoutX="347.0" layoutY="152.0" />
+            <TextArea layoutX="355.0" layoutY="419.0" prefHeight="200.0" prefWidth="436.0" />
+            <Label layoutX="109.0" layoutY="436.0" text="Event Description" />
+            <Button layoutX="470.0" layoutY="643.0" mnemonicParsing="false" text="Create" />
+            <Button layoutX="921.0" layoutY="643.0" mnemonicParsing="false" text="Quit" />
+            <Label layoutX="108.0" layoutY="349.0" text="Enter Time" />
+            <TextField layoutX="349.0" layoutY="339.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
