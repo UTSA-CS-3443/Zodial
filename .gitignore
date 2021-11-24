@@ -23,7 +23,12 @@
 hs_err_pid*
 
 # Project config files
+# -- IntelliJ
 .idea/
-
 Zodial.iml
 /bin/
+out/
+
+# -- Eclipse
+.classpath
+.project
