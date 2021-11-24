@@ -36,7 +36,7 @@ public class EventList {
 		try{
 			FileWriter fw = new FileWriter(filename, false);
 			for(int i = 0;i < userEvents.size();i++) {
-				fw.write( this.userEvents.get(i).getTitle() + "," + this.userEvents.get(i).getDescript() + "," + this.userEvents.get(i).getDate() + "," + this.userEvents.get(i).getTime() + "," + this.userEvents.get(i).getLocal() + "\n");
+				fw.write( this.userEvents.get(i).getTitle() + "," + this.userEvents.get(i).getDescription() + "," + this.userEvents.get(i).getDate() + "," + this.userEvents.get(i).getTime() + "," + this.userEvents.get(i).getLocal() + "\n");
 			}
 			fw.close();
 		}
