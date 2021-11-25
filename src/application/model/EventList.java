@@ -20,7 +20,7 @@ public class EventList {
 			while(scan.hasNext()) {
 				String line = scan.nextLine();
 				String[] tokens = line.split(",");
-				Event event = new Event(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
+				Event event = new Event(tokens[0],tokens[1],tokens[4],tokens[2],tokens[3], tokens[5]);
 				this.userEvents.add(event);
 			}
 			scan.close();
@@ -36,7 +36,7 @@ public class EventList {
 		try{
 			FileWriter fw = new FileWriter(filename, false);
 			for(int i = 0;i < userEvents.size();i++) {
-				fw.write( this.userEvents.get(i).getTitle() + "," + this.userEvents.get(i).getDescription() + "," + this.userEvents.get(i).getDate() + "," + this.userEvents.get(i).getTime() + "," + this.userEvents.get(i).getLocal() + "\n");
+				fw.write( this.userEvents.get(i).getTitle() + "," + this.userEvents.get(i).getDescription() + "," + this.userEvents.get(i).getLocation() + this.userEvents.get(i).getDate() + "," + this.userEvents.get(i).getTime() + "," + "\n");
 			}
 			fw.close();
 		}
