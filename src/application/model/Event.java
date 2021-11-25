@@ -8,17 +8,18 @@ package application.model;
 public class Event {
 		private String title;
 		private String description;
+		private String location;
 		private String date;
 		private String time;
-		private String local;
 		private EventCategory category;
 
-		public Event(String title, String description, String date, String time, String local, String categoryTitle) {
+		public Event(String title, String description, String location, String date, String time, String categoryTitle) {
 			this.title = title;
 			this.description = description;
+			this.location = location;
 			this.date = date;
 			this.time = time;
-			this.local = local;
+			this.category = new EventCategory(categoryTitle);
 			this.category = new EventCategory(categoryTitle);
 		}
 
@@ -43,6 +44,14 @@ public class Event {
 		}
 
 
+		public String getLocation() {
+			return location;
+		}
+
+		public void setLocation(String location) {
+			this.location = location;
+		}
+
 		public String getDate() {
 			return date;
 		}
@@ -60,16 +69,6 @@ public class Event {
 
 		public void setTime(String time) {
 			this.time = time;
-		}
-
-
-		public String getLocal() {
-			return local;
-		}
-
-
-		public void setLocal(String local) {
-			this.local = local;
 		}
 
 

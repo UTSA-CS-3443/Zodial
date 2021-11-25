@@ -35,6 +35,7 @@ public class EventCreationController implements EventHandler<MouseEvent> {
 
     @FXML private TextField titleField;
     @FXML private TextField descriptionField;
+    @FXML private TextField locationField;
     @FXML private TextField dateField;
     @FXML private TextField timeStartField;
     @FXML private TextField timeEndField;
@@ -64,9 +65,9 @@ public class EventCreationController implements EventHandler<MouseEvent> {
                 Event newEvent = new Event(
                         titleField.getText().trim(),
                         descriptionField.getText().trim(),
+                        locationField.getText().trim(),
                         dateField.getText().trim(),
                         (timeStartField.getText().trim() + " - " + timeEndField.getText().trim()),
-                        "local",
                         categoryChoices.getValue()
                 );
                 User.ACTIVE_USER.getEvents().add(newEvent);
