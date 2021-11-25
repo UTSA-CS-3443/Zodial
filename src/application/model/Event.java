@@ -20,6 +20,7 @@ public class Event {
 			this.date = date;
 			this.time = time;
 			this.category = new EventCategory(categoryTitle);
+			this.category = new EventCategory(categoryTitle);
 		}
 
 
