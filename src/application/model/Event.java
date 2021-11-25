@@ -7,23 +7,22 @@ package application.model;
 	 */
 public class Event {
 		private String title;
-		private String descript;
+		private String description;
+		private String location;
 		private String date;
 		private String time;
-		private String local;
-		
-		public Event(String title, String descript,String date, String time, String local){
+		private EventCategory category;
+
+		public Event(String title, String description, String location, String date, String time, String categoryTitle) {
 			this.title = title;
-			this.descript = descript;
+			this.description = description;
+			this.location = location;
 			this.date = date;
 			this.time = time;
-			this.local = local;
+			this.category = new EventCategory(categoryTitle);
+			this.category = new EventCategory(categoryTitle);
 		}
-		
-		@Override
-		public String toString() {
-			return this.getTitle() + "\n" + this.getDate() + "  " + this.getTime() + "\n" + this.getDescript();
-		}
+
 
 		public String getTitle() {
 			return title;
@@ -35,15 +34,23 @@ public class Event {
 		}
 
 
-		public String getDescript() {
-			return descript;
+		public String getDescription() {
+			return description;
 		}
 
 
-		public void setDescript(String descript) {
-			this.descript = descript;
+		public void setDescription(String description) {
+			this.description = description;
 		}
 
+
+		public String getLocation() {
+			return location;
+		}
+
+		public void setLocation(String location) {
+			this.location = location;
+		}
 
 		public String getDate() {
 			return date;
@@ -65,14 +72,18 @@ public class Event {
 		}
 
 
-		public String getLocal() {
-			return local;
+		public EventCategory getCategory() {
+			return category;
 		}
 
 
-		public void setLocal(String local) {
-			this.local = local;
+		public void setCategory(EventCategory category) {
+			this.category = category;
 		}
 
+		@Override
+		public String toString() {
+			return this.getTitle() + "\n" + this.getDate() + "  " + this.getTime() + "\n" + this.getDescription();
+		}
 	}
 
