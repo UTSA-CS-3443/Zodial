@@ -118,7 +118,7 @@
                   <Insets left="5.0" />
                </opaqueInsets>
             </PasswordField>
-            <Button fx:id="signupPromptSignupButton" layoutX="418.0" layoutY="626.0" mnemonicParsing="false" onAction="#handle" prefHeight="33.0" prefWidth="112.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Sign up">
+            <Button fx:id="signupPromptNextButton" layoutX="418.0" layoutY="626.0" mnemonicParsing="false" onAction="#handle" prefHeight="33.0" prefWidth="112.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Next">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -133,6 +133,49 @@
                   <Font size="15.0" />
                </font>
             </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="signupSubPrompt" prefHeight="800.0" prefWidth="800.0">
+         <children>
+            <Rectangle fx:id="promptBox11" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="366.0" layoutX="253.0" layoutY="285.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" width="294.0" />
+            <Rectangle fx:id="promptBar11" arcHeight="5.0" arcWidth="5.0" fill="#2f2f2f" height="60.0" layoutX="251.0" layoutY="283.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="298.0" />
+            <Circle fx:id="personBackground11" fill="#2f2f2f" layoutX="401.0" layoutY="325.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <ImageView fx:id="personIcon11" fitHeight="81.0" fitWidth="78.0" layoutX="362.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../data/personIcon.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="signupSubFirstNameField" layoutX="282.0" layoutY="415.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="First Name">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Button fx:id="signupSubPromptSignupButton" layoutX="418.0" layoutY="626.0" mnemonicParsing="false" onAction="#handle" prefHeight="33.0" prefWidth="112.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Sign up">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="signupSubPromptReturnButton" layoutX="272.0" layoutY="626.0" mnemonicParsing="false" onAction="#handle" prefHeight="33.0" prefWidth="112.0" style="-fx-border-width: 2; -fx-border-radius: 2; -fx-border-color: #000000; -fx-background-color: #fdaf14;" text="Return">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Label fx:id="signupSubErrorLabel" alignment="CENTER" layoutX="261.0" layoutY="559.0" prefHeight="24.0" prefWidth="279.0" textFill="RED">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="signupSubLastNameField" layoutX="282.0" layoutY="489.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="First Name">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
          </children>
       </AnchorPane>
    </children>

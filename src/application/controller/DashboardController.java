@@ -33,6 +33,7 @@ public class DashboardController implements Initializable {
     @FXML
     private VBox eventBox; 
     
+    
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
     	EventList eList = new EventList();
@@ -47,6 +48,7 @@ public class DashboardController implements Initializable {
     		eventBox.getChildren().add(label);
     	}
     }
+    
     public void addEvent(ActionEvent event) {
     	//TODO addEvents once the addEvent Scene and controller are completed.
     }

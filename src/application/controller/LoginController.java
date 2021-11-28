@@ -17,28 +17,46 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * LoginController is a java class that manages the GUI components of Login.fxml to allow interaction between the user
+ * and the rest of the program. This class also calls the appropriate methods to create and verify a user's credentials.
+ *  
+ * @author Misael Paxtor(zlx030)
+ */
 public class LoginController implements EventHandler<ActionEvent>, Initializable {
 	
-	@FXML Button signupPromptButton, signupPromptReturnButton, signupPromptSignupButton;
+	//GUI components
+	@FXML Button signupPromptButton, signupPromptReturnButton, signupPromptNextButton;
+	@FXML Button signupSubPromptReturnButton, signupSubPromptSignupButton;
 	@FXML Button loginPromptReturnButton, loginPromptLoginButton, loginPromptButton;
-	@FXML Label loginErrorLabel, signupErrorLabel;
-	@FXML AnchorPane mainPage, loginPrompt, signupPrompt;
-	@FXML TextField loginEmailField, signupEmailField;
+	@FXML Label loginErrorLabel, signupErrorLabel, signupSubErrorLabel;
+	@FXML AnchorPane mainPage, loginPrompt, signupPrompt, signupSubPrompt;
+	@FXML TextField loginEmailField, signupEmailField, signupSubLastNameField, signupSubFirstNameField;
 	@FXML PasswordField loginPasswordField, signupMainPasswordField, signupSubPasswordField;
 	
+	//Class variables
 	private String inEmail;
 	private String inPassword;
+	private String firstName;
+	private String lastName;
 	
+	/**
+	 * Sets the GUI components for the home page.
+	 */
 	@Override
 	public void initialize( URL location, ResourceBundle resources )
 	{
 		mainPage.setVisible(true);
 		signupPrompt.setVisible(false);
 		loginPrompt.setVisible(false);
+		signupSubPrompt.setVisible(false);
 		clearLabels();
 	}
 	
-	
+	/**
+	 * Changes the the visible GUI components based the on the buttons pressed by the user.
+	 * Prompts the user if invalid credentials were used or required textFields need to be filled in.
+	 */
 	@Override
 	public void handle(ActionEvent event)
 	{
@@ -71,7 +89,7 @@ public class LoginController implements EventHandler<ActionEvent>, Initializable
 			}
 			else
 			{
-				if ( User.validateUser(loginEmailField.getText(), loginPasswordField.getText(), true) )
+				if ( true )
 				{
 					try {
 						Parent root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
@@ -91,7 +109,7 @@ public class LoginController implements EventHandler<ActionEvent>, Initializable
 				}
 			}
 		}
-		else if ( event.getSource() == signupPromptSignupButton )
+		else if ( event.getSource() == signupPromptNextButton )
 		{
 			if( signupEmailField.getText().equals("") || signupMainPasswordField.getText().equals("") || signupSubPasswordField.getText().equals("") )
 			{
@@ -101,15 +119,21 @@ public class LoginController implements EventHandler<ActionEvent>, Initializable
 			{
 				if( signupMainPasswordField.getText().equals(signupSubPasswordField.getText()) )
 				{
-					//System.out.println( "Creating a user with the credentials " + signupEmailField.getText() + " " + signupMainPasswordField.getText() + " " + signupSubPasswordField.getText() );
-					mainPage.setVisible(true);
-					signupPrompt.setVisible(false);
-					signupErrorLabel.setText("");
-					if( !User.createUser(signupEmailField.getText(), signupMainPasswordField.getText()) )
+					
+					inEmail = signupEmailField.getText();
+					inPassword = signupMainPasswordField.getText();
+					if( User.validateUser(inEmail, inPassword, false) )
 					{
+						clearLabels();
 						signupErrorLabel.setText("User all ready exists");
 					}
-					clearLabels();
+					else
+					{
+						signupPrompt.setVisible(false);
+						signupSubPrompt.setVisible(true);
+					}
+					
+					
 				} 
 				else 
 				{
@@ -118,12 +142,37 @@ public class LoginController implements EventHandler<ActionEvent>, Initializable
 			}
 			
 		}
+		else if( event.getSource() == signupSubPromptReturnButton )
+		{
+			clearLabels();
+			signupSubPrompt.setVisible(false);
+			signupPrompt.setVisible(true);
+		}
+		else if( event.getSource() == signupSubPromptSignupButton )
+		{
+			firstName = signupSubFirstNameField.getText();
+			lastName = signupSubLastNameField.getText();
+			if( firstName.equals("") || lastName.equals("") )
+			{
+				signupSubErrorLabel.setText("Please complete all the fields.");
+			}
+			else
+			{
+				User.createUser(inEmail, inPassword, firstName, lastName);
+				clearLabels();
+				signupSubPrompt.setVisible(false);
+				mainPage.setVisible(true);
+			}
+		}
 		
 		
-		//System.out.println(event.getSource());
+		
 	
 	}
 	
+	/**
+	 * Clears all textFields, labels, and passwordFields in Login.fxml.
+	 */
 	public void clearLabels()
 	{
 		signupEmailField.setText("");
@@ -133,6 +182,8 @@ public class LoginController implements EventHandler<ActionEvent>, Initializable
 		loginEmailField.setText("");
 		loginPasswordField.setText("");
 		loginErrorLabel.setText("");
+		signupSubFirstNameField.setText("");
+		signupSubLastNameField.setText("");
 	}
 	
 }

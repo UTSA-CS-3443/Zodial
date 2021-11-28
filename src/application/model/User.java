@@ -14,7 +14,7 @@ import java.util.Scanner;
  * username, password, and a list of any events that user has created. This
  * class also tracks the currently active user via a static field ACTIVE_USER.
  *
- * @author TJ English (pcb408), Misael Paxtor (abc123)
+ * @author TJ English (pcb408), Misael Paxtor (zlx030)
  * UTSA CS 3443 - Zodial (Group Project)
  * Fall 2021
  */
@@ -81,6 +81,7 @@ public class User {
 					if( (inAccPassword.equals(password)))
 					{
 						passwordCorrect = true;	
+						String name = input.next();
 					}
 						
 					
@@ -96,6 +97,7 @@ public class User {
 			{
 				ACTIVE_USER.setUsername(username);
 				ACTIVE_USER.setPassword(password);
+				ACTIVE_USER.setName(username);
 			}
 			
 			return (userNameFound && passwordCorrect);
@@ -109,7 +111,7 @@ public class User {
     	return false;
     }
     
-    public static boolean createUser( String username, String password )
+    public static boolean createUser( String username, String password, String firstName, String lastName )
     {
     	File userFile = new File("data/users.txt");
     	try 
@@ -120,24 +122,16 @@ public class User {
 			return false;
 		}
     	
-    	
-    	if( User.validateUser(username, password, false) )
-    	{
-    		return false;
-    	}
-    	else
-    	{
-	    	try 
-	    	{
-	    		FileWriter writer = new FileWriter("data/users.txt", true);
-	    		writer.write( username + "," + password + "\n");
-	    		writer.close();
-	    		return true;
-	    	} catch (IOException e) {
-	    		e.printStackTrace();
-	    	}
+	    try 
+	    {
+	    	FileWriter writer = new FileWriter("data/users.txt", true);
+	    	writer.write( username + "," + password + "," + firstName + "," + lastName + "\n");
+	    	writer.close();
+	    	return true;
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+	    }
 	    	
-    	}
     	
     	return false;
     	
