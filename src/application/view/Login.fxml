@@ -18,13 +18,13 @@
       </Label>
       <ImageView fitHeight="139.0" fitWidth="131.0" layoutX="231.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../data/logo.png" />
+            <Image url="@../../../images/logo.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f2f2f" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
       <ImageView fitHeight="52.0" fitWidth="46.0" layoutX="23.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../data/logo.png" />
+            <Image url="@../../../images/logo.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="mainPage" prefHeight="800.0" prefWidth="800.0">
@@ -47,7 +47,7 @@
             <Circle fx:id="personBackground" fill="#2f2f2f" layoutX="401.0" layoutY="324.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <ImageView fx:id="personIcon" fitHeight="81.0" fitWidth="78.0" layoutX="361.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../data/personIcon.png" />
+                  <Image url="@../../../images/personIcon.png" />
                </image>
             </ImageView>
             <Rectangle fx:id="promptBox" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="366.0" layoutX="254.0" layoutY="284.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" width="294.0" />
@@ -91,7 +91,7 @@
             <Circle fx:id="personBackground1" fill="#2f2f2f" layoutX="401.0" layoutY="325.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <ImageView fx:id="personIcon1" fitHeight="81.0" fitWidth="78.0" layoutX="362.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../data/personIcon.png" />
+                  <Image url="@../../../images/personIcon.png" />
                </image>
             </ImageView>
             <TextField fx:id="signupEmailField" layoutX="282.0" layoutY="375.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="Email">
@@ -142,7 +142,7 @@
             <Circle fx:id="personBackground11" fill="#2f2f2f" layoutX="401.0" layoutY="325.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <ImageView fx:id="personIcon11" fitHeight="81.0" fitWidth="78.0" layoutX="362.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../data/personIcon.png" />
+                  <Image url="@../../../images/personIcon.png" />
                </image>
             </ImageView>
             <TextField fx:id="signupSubFirstNameField" layoutX="282.0" layoutY="415.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="First Name">

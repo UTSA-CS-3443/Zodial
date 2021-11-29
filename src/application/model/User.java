@@ -49,7 +49,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.profilePicPath = "@../../../data/blank-profile-picture-973460_1280.png";
+        this.profilePicPath = "@../../../images/default-profile-picture.png";
         this.events = new ArrayList<>();
     }
 
@@ -110,7 +110,7 @@ public class User {
     	
     	return false;
     }
-    
+
     public static boolean createUser( String username, String password, String firstName, String lastName )
     {
     	File userFile = new File("data/users.txt");

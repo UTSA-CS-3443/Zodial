@@ -1,6 +1,7 @@
 package application.controller;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import application.Main;
@@ -48,6 +49,17 @@ public class DashboardController implements Initializable {
     		eventBox.getChildren().add(label);
     	}
     }
+
+    @FXML
+	private void launchPictureSelector() {
+		try {
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("../view/ProfilePicture.fxml")));
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
     
     public void addEvent(ActionEvent event) {
     	//TODO addEvents once the addEvent Scene and controller are completed.
