@@ -1,6 +1,7 @@
 package application.controller;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -18,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -51,7 +53,6 @@ public class DashboardController implements Initializable {
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
- 
     	User.ACTIVE_USER.readEventList("data/exampleEvents.txt");
     	for(int i = 0;i < User.ACTIVE_USER.getEvents().size();i++) {
     		int j = i;
@@ -62,17 +63,29 @@ public class DashboardController implements Initializable {
     		label.setOnMouseClicked(event -> deleteEvent(User.ACTIVE_USER,label,j));
     		eventBox.getChildren().add(label);
     	}
+    	profilePic.setImage(new Image("/images/" + User.ACTIVE_USER.getProfilePic()));
     }
-    
+
+    @FXML
+	private void launchPictureSelector() {
+		try {
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("../view/ProfilePicture.fxml")));
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
     public void addEvent(ActionEvent event) {
     	try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/EventCreation.fxml"));
 			Main.stage.setScene(new Scene(root, 800, 800));
 			Main.stage.show();
-			
+
 		}catch (Exception e) {
 			e.printStackTrace();
-		}	
+		}
     }
     public void logout(ActionEvent event) {
     	try {
@@ -89,7 +102,7 @@ public class DashboardController implements Initializable {
     	
     	Alert alert = new Alert(AlertType.CONFIRMATION);
     	
-    	
+
     	alert.setHeaderText("Delete Confirmation");
     	
     	alert.setContentText("Do you want to delete event- " + ACTIVE_USER.getEvent(eventIndex).getTitle() + "?");

@@ -29,7 +29,7 @@ public class User {
 
     private String username;
     private String password;
-    private String profilePicPath;
+    private String profilePic;
     private String name;
     private ArrayList<Event> events;
 
@@ -49,7 +49,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.profilePicPath = "@../../../data/blank-profile-picture-973460_1280.png";
+        this.profilePic = "avatar_0.png";
         this.events = new ArrayList<>();
     }
 
@@ -89,19 +89,19 @@ public class User {
 							ACTIVE_USER.setPassword(password);
 							ACTIVE_USER.setName(name);
 						}
-						
+
 					}
-						
-					
+
+
 				}
 				input.close();
 			}
-			
+
 			fileReader.close();
-			
-			
-			
-			
+
+
+
+
 			return (userNameFound && passwordCorrect);
 			
 		}
@@ -112,10 +112,10 @@ public class User {
     	
     	return false;
     }
-    
+
     public static boolean createUser( String username, String password, String firstName, String lastName )
     {
-    	File userFile = new File("data/users.txt");
+    	File userFile = new File("data/" + username + ".txt");
     	try 
     	{
 			userFile.createNewFile();
@@ -236,8 +236,8 @@ public class User {
      *
      * Returns: Local path of User's profile picture title (String)
      */
-    public String getProfilePicPath() {
-        return profilePicPath;
+    public String getProfilePic() {
+        return profilePic;
     }
 
     /**
@@ -245,13 +245,13 @@ public class User {
      * ---------------
      * Setter for local path of User's profile picture.
      *
-     *      @param profilePicPath: 	Local path of User's profile picture
+     *      @param profilePic: 	Local path of User's profile picture
 	 *                           	title.
      *
      * Returns: N/A
      */
-    public void setProfilePicPath(String profilePicPath) {
-        this.profilePicPath = profilePicPath;
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     /**
