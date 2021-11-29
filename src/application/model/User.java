@@ -1,10 +1,6 @@
 package application.model;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -90,12 +86,14 @@ public class User {
 					{
 						passwordCorrect = true;	
 						String name = input.next() + input.next();
+						String profilePic = input.next();
 						
 						if( setActiveUser )
 						{
 							ACTIVE_USER.setUsername(username);
 							ACTIVE_USER.setPassword(password);
 							ACTIVE_USER.setName(name);
+							ACTIVE_USER.setProfilePic(profilePic);
 						}
 
 					}
@@ -134,17 +132,18 @@ public class User {
     	
 	    try 
 	    {
+	    	User newUser = new User(username, password, firstName + " " + lastName);
 	    	FileWriter writer = new FileWriter("data/users.txt", true);
-	    	writer.write( username + "," + password + "," + firstName + "," + lastName + ",avatar_0.png\n");
+	    	writer.write(newUser.toString() + "\n");
 	    	writer.close();
 	    	return true;
 	    } catch (IOException e) {
 	    	e.printStackTrace();
 	    }
-	    	
-    	
+
+
     	return false;
-    	
+
     }
     
     /**
@@ -183,6 +182,33 @@ public class User {
 		events.remove(index);
 		addEventListToFile(filename);
 	}
+
+	public void updateProfilePicture(String newProfPicture) {
+		try {
+			String oldFile = "data/users.txt";
+			FileReader fr = new FileReader(oldFile);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+
+			System.out.println("Did delete: " + new File(oldFile).delete());
+			File newUsersFile = new File(oldFile);
+			FileWriter fw = new FileWriter(newUsersFile);
+
+			while ((line = br.readLine()) != null) {
+				String[] tokens = line.split(",");
+				if (tokens[0].equalsIgnoreCase(User.ACTIVE_USER.getUsername())) {
+					tokens[4] = newProfPicture;
+				}
+				fw.write(tokens[0] + "," + tokens[1] + "," + tokens[2] + "," + tokens[3] + "," + tokens[4]);
+			}
+			fr.close();
+			br.close();
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
     public Event getEvent(int index) {
 		return this.events.get(index);
 	}
@@ -260,6 +286,7 @@ public class User {
      */
     public void setProfilePic(String profilePic) {
         this.profilePic = profilePic;
+		updateProfilePicture(profilePic);
     }
 
     /**
@@ -313,5 +340,18 @@ public class User {
 	public int getSize() {
 		// TODO Auto-generated method stub
 		return this.events.size();
+	}
+
+	/**
+	 Method: toString
+	 ------------------
+	 Overridden toString method that returns a string representation of
+	 the User class.
+
+	 Returns: Stringified User class
+	 */
+	@Override
+	public String toString() {
+		return username + "," + password + "," + name + "," + profilePic;
 	}
 }
