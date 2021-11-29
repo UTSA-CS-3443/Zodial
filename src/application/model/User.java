@@ -199,7 +199,7 @@ public class User {
 				if (tokens[0].equalsIgnoreCase(User.ACTIVE_USER.getUsername())) {
 					tokens[4] = newProfPicture;
 				}
-				fw.write(tokens[0] + "," + tokens[1] + "," + tokens[2] + "," + tokens[3] + "," + tokens[4]);
+				fw.write(tokens[0] + "," + tokens[1] + "," + tokens[2] + "," + tokens[3] + "," + tokens[4] + "\n");
 			}
 			fr.close();
 			br.close();
@@ -352,6 +352,6 @@ public class User {
 	 */
 	@Override
 	public String toString() {
-		return username + "," + password + "," + name + "," + profilePic;
+		return username + "," + password + "," + name.replace(" ", ",") + "," + profilePic;
 	}
 }
