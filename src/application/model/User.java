@@ -138,6 +138,48 @@ public class User {
     }
     
     /**
+     * @param filename
+     */
+    public void readEventList(String filename) {
+		try {
+			File file = new File(filename);
+			Scanner scan = new Scanner(file);
+			while(scan.hasNext()) {
+				String line = scan.nextLine();
+				String[] tokens = line.split("#");
+				Event event = new Event(tokens[0],tokens[1],tokens[4],tokens[2],tokens[3], tokens[5]);
+
+				this.events.add(event);
+			}
+			scan.close();
+		}
+		catch( IOException e) {
+			e.printStackTrace();
+		}
+	}
+    public void addEventListToFile(String filename) {
+		try{
+			FileWriter fw = new FileWriter(filename, false);
+			for(int i = 0;i < events.size();i++) {
+				fw.write( this.events.get(i).getTitle() + "#" + this.events.get(i).getDescription() + "#" + this.events.get(i).getLocation() + "#" + this.events.get(i).getDate() + "#" + this.events.get(i).getTime() + "#" + this.events.get(i).getCategory().getTitle() + "\n");
+			}
+			fw.close();
+		}
+			catch( IOException e) {
+				e.printStackTrace();
+			}
+	}
+    public void removeEvent(int index, String filename) {
+		events.remove(index);
+		addEventListToFile(filename);
+	}
+    public Event getEvent(int index) {
+		return this.events.get(index);
+	}
+    /**
+	 * @return an int of the size of the userEvents
+	 */
+    /**
      * Method: getUsername
      * ---------------
      * Getter for User's username.
@@ -257,4 +299,9 @@ public class User {
     public void setEvents(ArrayList<Event> events) {
         this.events = events;
     }
+
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return this.events.size();
+	}
 }
