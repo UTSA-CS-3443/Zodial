@@ -83,13 +83,15 @@ public class LoginController implements EventHandler<ActionEvent>, Initializable
 		}
 		else if ( event.getSource() == loginPromptLoginButton )
 		{
-			if( loginEmailField.getText().equals("") || loginPasswordField.getText().equals("") )
+			inEmail = loginEmailField.getText();
+			inPassword = loginPasswordField.getText();
+			if( inEmail.equals("") || inPassword.equals("") )
 			{
 				loginErrorLabel.setText("Please complete all the fields.");
 			}
 			else
 			{
-				if ( true )
+				if ( User.validateUser( inEmail , inPassword, true) )
 				{
 					try {
 						Parent root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));

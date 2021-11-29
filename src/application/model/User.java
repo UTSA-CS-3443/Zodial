@@ -81,24 +81,26 @@ public class User {
 					if( (inAccPassword.equals(password)))
 					{
 						passwordCorrect = true;	
-						String name = input.next();
+						String name = input.next() + input.next();
+						
+						if( setActiveUser )
+						{
+							ACTIVE_USER.setUsername(username);
+							ACTIVE_USER.setPassword(password);
+							ACTIVE_USER.setName(name);
+						}
+						
 					}
 						
 					
 				}
 				input.close();
-				System.out.println( line );
 			}
 			
 			fileReader.close();
 			
 			
-			if( setActiveUser )
-			{
-				ACTIVE_USER.setUsername(username);
-				ACTIVE_USER.setPassword(password);
-				ACTIVE_USER.setName(username);
-			}
+			
 			
 			return (userNameFound && passwordCorrect);
 			
