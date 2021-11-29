@@ -21,11 +21,7 @@ import java.util.Scanner;
 public class User {
 
     // Creating for testing purposes -- will be set based on Userpool generated from file
-    public static User ACTIVE_USER = new User(
-            "test",
-            "testp",
-            "Mr Test"
-    );
+    public static User ACTIVE_USER;
 
     private String username;
     private String password;

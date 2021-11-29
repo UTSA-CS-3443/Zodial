@@ -2,8 +2,9 @@ package application.model;
 
 
 	/**
-	 * @author CPGau
 	 *
+	 *
+	 * @author CPGau, TJ English (pcb408)
 	 */
 public class Event {
 		private String title;

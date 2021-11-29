@@ -24,6 +24,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+/**
+ *
+ *
+ * @author Daniel Martinez (abc123), TJ English (pcb408)
+ */
 public class DashboardController implements Initializable {
 
     @FXML

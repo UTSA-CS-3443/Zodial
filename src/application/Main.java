@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 /**
  * Main is a java class that initializes the stage where the first/main scene of the program is shown.
  * 
- * @authors Misael Paxtor(zlx030)
+ * @author Misael Paxtor(zlx030)
  */
 public class Main extends Application {
 	
