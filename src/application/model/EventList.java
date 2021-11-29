@@ -19,8 +19,9 @@ public class EventList {
 			Scanner scan = new Scanner(file);
 			while(scan.hasNext()) {
 				String line = scan.nextLine();
-				String[] tokens = line.split(",");
+				String[] tokens = line.split("#");
 				Event event = new Event(tokens[0],tokens[1],tokens[4],tokens[2],tokens[3], tokens[5]);
+
 				this.userEvents.add(event);
 			}
 			scan.close();

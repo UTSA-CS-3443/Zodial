@@ -83,7 +83,7 @@ public class Event {
 
 		@Override
 		public String toString() {
-			return this.getTitle() + "\n" + this.getDate() + "  " + this.getTime() + "\n" + this.getDescription();
+			return this.getDate() + " " + this.getTime() + "\n" + this.getTitle() + "\n" + this.getDescription();
 		}
 	}
 
