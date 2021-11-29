@@ -14,10 +14,10 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3f3f3f" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
       <ImageView fitHeight="52.0" fitWidth="46.0" layoutX="23.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/logo.png" />
+            <Image url="@../../images/logo.png" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="profPicPane" layoutY="60.0" prefHeight="740.0" prefWidth="800.0">
+      <AnchorPane layoutY="60.0" prefHeight="740.0" prefWidth="800.0">
          <children>
             <Label layoutX="162.0" layoutY="72.0" prefHeight="60.0" prefWidth="539.0" text="Update your Profile Picture" textFill="#3f3f3f">
                <font>
@@ -27,58 +27,62 @@
             <Separator layoutX="99.0" layoutY="151.0" prefHeight="4.0" prefWidth="595.0" />
             <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="89.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/pencil.png" />
+                  <Image url="@../../images/pencil.png" />
                </image>
             </ImageView>
             <ImageView fx:id="currProfPic" fitHeight="125.0" fitWidth="125.0" layoutX="337.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="185.0" layoutY="220.0" text="Current Profile Picture:" />
             <Label layoutX="344.0" layoutY="335.0" text="Choose new picture:" />
-            <ImageView fx:id="man1" fitHeight="125.0" fitWidth="125.0" layoutX="89.0" layoutY="370.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/man1_avatar.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="woman1" fitHeight="125.0" fitWidth="125.0" layoutX="89.0" layoutY="524.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/woman1_avatar.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="man2" fitHeight="125.0" fitWidth="125.0" layoutX="338.0" layoutY="370.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/man2_avatar.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="woman2" fitHeight="125.0" fitWidth="125.0" layoutX="338.0" layoutY="524.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/woman2_avatar.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="man3" fitHeight="125.0" fitWidth="125.0" layoutX="574.0" layoutY="370.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/man3_avatar.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="woman3" fitHeight="125.0" fitWidth="125.0" layoutX="576.0" layoutY="524.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/woman3_avatar.png" />
-               </image>
-            </ImageView>
             <Button fx:id="saveButton" alignment="CENTER" layoutX="320.0" layoutY="674.0" mnemonicParsing="false" onMouseClicked="#handle" prefHeight="43.0" prefWidth="161.0" style="-fx-background-color: #feb800;" text="Save Changes">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <RadioButton fx:id="picRadio1" layoutX="77.0" layoutY="382.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
-            <RadioButton fx:id="picRadio4" layoutX="77.0" layoutY="524.0" mnemonicParsing="false" />
-            <RadioButton fx:id="picRadio2" layoutX="330.0" layoutY="381.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
-            <RadioButton fx:id="picRadio5" layoutX="325.0" layoutY="524.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
-            <RadioButton fx:id="picRadio3" layoutX="564.0" layoutY="381.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
-            <RadioButton fx:id="picRadio6" layoutX="564.0" layoutY="524.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
-            <Hyperlink fx:id="cancelLink" layoutX="251.0" layoutY="683.0" onMouseClicked="#handle" text="Cancel" textFill="#3f3f3f" visited="true">
+            <Hyperlink id="cancel" fx:id="cancelLink" layoutX="251.0" layoutY="683.0" onMouseClicked="#handle" text="Cancel" textFill="#3f3f3f" visited="true">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Hyperlink>
+            <Pane fx:id="profPicPane" layoutX="60.0" layoutY="358.0" prefHeight="308.0" prefWidth="680.0">
+               <children>
+                  <ImageView fx:id="man1" fitHeight="125.0" fitWidth="125.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/avatar_1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="woman4" fitHeight="125.0" fitWidth="125.0" layoutX="14.0" layoutY="169.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/avatar_4.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="man2" fitHeight="125.0" fitWidth="125.0" layoutX="281.0" layoutY="17.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/avatar_2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="woman5" fitHeight="125.0" fitWidth="125.0" layoutX="281.0" layoutY="169.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/avatar_5.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="man3" fitHeight="125.0" fitWidth="125.0" layoutX="548.0" layoutY="14.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/avatar_3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="woman6" fitHeight="125.0" fitWidth="125.0" layoutX="548.0" layoutY="169.0" onMouseClicked="#radioButtonSelector" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/avatar_6.png" />
+                     </image>
+                  </ImageView>
+                  <RadioButton id="picRadio1" fx:id="picRadio1" layoutX="2.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
+                  <RadioButton id="picRadio4" fx:id="picRadio4" layoutX="2.0" layoutY="169.0" mnemonicParsing="false" />
+                  <RadioButton id="picRadio2" fx:id="picRadio2" layoutX="269.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
+                  <RadioButton id="picRadio5" fx:id="picRadio5" layoutX="269.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
+                  <RadioButton id="picRadio3" fx:id="picRadio3" layoutX="536.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
+                  <RadioButton id="picRadio6" fx:id="picRadio6" layoutX="536.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#radioButtonSelector" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>

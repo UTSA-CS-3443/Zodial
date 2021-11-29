@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import application.Main;
 import application.model.EventList;
+import application.model.User;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -53,18 +54,18 @@ public class DashboardController implements Initializable {
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
- 
     	EventList eList = new EventList();
     	eList.readEventList("data/exampleEvents.txt");
     	for(int i = 0;i < eList.size();i++) {
     		int j = i;
     		Label label = new Label(eList.getEvent(i).toString());
-    		label.setStyle("-fx-border-width: 2; -fx-border-radius: 2;-fx-border-color: #000000;-fx-font-size: 14;-fx-font-weight: bold;-fx-background-color: "+ eList.getEvent(i).getCategory() + ";");
+    		label.setStyle("-fx-border-width: 2; -fx-border-radius: 2;-fx-border-color: #000000;-fx-font-size: 14;-fx-font-weight: bold;-fx-background-color: "+ eList.getEvent(i).getCategory().getColorHexCode() + ";");
     		label.setMinWidth(468);
     		label.setMinHeight(100);
     		label.setOnMouseClicked(event -> deleteEvent(eList,label,j));
     		eventBox.getChildren().add(label);
     	}
+    	profilePic.setImage(new Image("/images/" + User.ACTIVE_USER.getProfilePic()));
     }
 
     @FXML

@@ -13,7 +13,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000203" height="67.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <ImageView fitHeight="66.0" fitWidth="59.0" layoutX="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/logo.png" />
+            <Image url="@../../images/logo.png" />
          </image>
       </ImageView>
       <ScrollPane hbarPolicy="NEVER" layoutX="306.0" layoutY="172.0" prefHeight="617.0" prefWidth="485.0">
@@ -31,13 +31,13 @@
          </font></Button>
       <ImageView fx:id="profilePic" fitHeight="231.0" fitWidth="241.0" layoutX="41.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/default-profile-picture.png" />
+            <Image url="@../../images/default-profile-picture.png" />
          </image>
       </ImageView>
       <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="TOP" layoutX="86.0" layoutY="427.0" prefHeight="17.0" prefWidth="142.0" style="-fx-background-color: #fdaf14; -fx-border-color: #000000; -fx-border-width: 2;" text="username@gmail.com" />
       <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="244.0" layoutY="375.0" onMouseClicked="#launchPictureSelector" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/pencil.png" />
+            <Image url="@../../images/pencil.png" />
          </image>
       </ImageView>
    </children>

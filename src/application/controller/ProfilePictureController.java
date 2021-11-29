@@ -58,18 +58,18 @@ public class ProfilePictureController implements EventHandler<MouseEvent> {
         try {
             Node clickedOption = (Node) event.getSource();
             if (!clickedOption.getId().equalsIgnoreCase("cancel")) {
-                String optionChosen = "";
+                int optionChosen = 0;
 
                 for (int i = 1; i <= 6; i++) {
-                    RadioButton currentRadio = (RadioButton) event.getSource();
+                    RadioButton currentRadio = (RadioButton) profPicPane.lookup("#picRadio" + i);
                     boolean isSelected = currentRadio.isSelected();
                     if (isSelected) {
-                        optionChosen = currentRadio.getId();
+                        optionChosen = Integer.parseInt(currentRadio.getId().substring(currentRadio.getId().length() - 1));
                         break;
                     }
                 }
 
-                User.ACTIVE_USER.setProfilePicPath("../../../images/" + optionChosen + "_avatar.png");
+                User.ACTIVE_USER.setProfilePic("avatar_" + optionChosen + ".png");
             }
 
             Scene scene = new Scene(FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml")));
@@ -90,7 +90,7 @@ public class ProfilePictureController implements EventHandler<MouseEvent> {
      */
     @FXML
     private void initialize() {
-        currProfPic.setImage(new Image(User.ACTIVE_USER.getProfilePicPath()));
+        currProfPic.setImage(new Image("/images/" + User.ACTIVE_USER.getProfilePic()));
     }
 
     /**
@@ -105,11 +105,11 @@ public class ProfilePictureController implements EventHandler<MouseEvent> {
     private void radioButtonSelector(MouseEvent event) {
         Node optionChosen = (Node) event.getSource();
         int idLength = optionChosen.getId().length();
-        int optionNumberChosen = optionChosen.getId().charAt(idLength - 1);
+        int optionNumberChosen = Integer.parseInt(optionChosen.getId().substring(idLength - 1));
 
         clearRadioSelections();
 
-        ((RadioButton) profPicPane.lookup("picRadio" + optionNumberChosen)).setSelected(true);
+        ((RadioButton) profPicPane.lookup("#picRadio" + optionNumberChosen)).setSelected(true);
     }
 
     /**
