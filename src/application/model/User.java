@@ -29,7 +29,7 @@ public class User {
 
     private String username;
     private String password;
-    private String profilePic;
+    private String profilePicPath;
     private String name;
     private ArrayList<Event> events;
 
@@ -49,7 +49,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.profilePic = "default-profile-picture.png";
+        this.profilePicPath = "default-profile-picture.png";
         this.events = new ArrayList<>();
     }
 
@@ -81,25 +81,27 @@ public class User {
 					if( (inAccPassword.equals(password)))
 					{
 						passwordCorrect = true;	
-						String name = input.next();
-					}
+						String name = input.next() + input.next();
 						
-					
+						if( setActiveUser )
+						{
+							ACTIVE_USER.setUsername(username);
+							ACTIVE_USER.setPassword(password);
+							ACTIVE_USER.setName(name);
+						}
+
+					}
+
+
 				}
 				input.close();
-				System.out.println( line );
 			}
-			
+
 			fileReader.close();
-			
-			
-			if( setActiveUser )
-			{
-				ACTIVE_USER.setUsername(username);
-				ACTIVE_USER.setPassword(password);
-				ACTIVE_USER.setName(username);
-			}
-			
+
+
+
+
 			return (userNameFound && passwordCorrect);
 			
 		}
@@ -137,6 +139,48 @@ public class User {
     	
     }
     
+    /**
+     * @param filename
+     */
+    public void readEventList(String filename) {
+		try {
+			File file = new File(filename);
+			Scanner scan = new Scanner(file);
+			while(scan.hasNext()) {
+				String line = scan.nextLine();
+				String[] tokens = line.split("#");
+				Event event = new Event(tokens[0],tokens[1],tokens[4],tokens[2],tokens[3], tokens[5]);
+
+				this.events.add(event);
+			}
+			scan.close();
+		}
+		catch( IOException e) {
+			e.printStackTrace();
+		}
+	}
+    public void addEventListToFile(String filename) {
+		try{
+			FileWriter fw = new FileWriter(filename, false);
+			for(int i = 0;i < events.size();i++) {
+				fw.write( this.events.get(i).getTitle() + "#" + this.events.get(i).getDescription() + "#" + this.events.get(i).getLocation() + "#" + this.events.get(i).getDate() + "#" + this.events.get(i).getTime() + "#" + this.events.get(i).getCategory().getTitle() + "\n");
+			}
+			fw.close();
+		}
+			catch( IOException e) {
+				e.printStackTrace();
+			}
+	}
+    public void removeEvent(int index, String filename) {
+		events.remove(index);
+		addEventListToFile(filename);
+	}
+    public Event getEvent(int index) {
+		return this.events.get(index);
+	}
+    /**
+	 * @return an int of the size of the userEvents
+	 */
     /**
      * Method: getUsername
      * ---------------
@@ -192,8 +236,8 @@ public class User {
      *
      * Returns: Local path of User's profile picture title (String)
      */
-    public String getProfilePic() {
-        return profilePic;
+    public String getProfilePicPath() {
+        return profilePicPath;
     }
 
     /**
@@ -201,13 +245,13 @@ public class User {
      * ---------------
      * Setter for local path of User's profile picture.
      *
-     *      @param profilePic: 	Local path of User's profile picture
+     *      @param profilePicPath: 	Local path of User's profile picture
 	 *                           	title.
      *
      * Returns: N/A
      */
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
+    public void setProfilePicPath(String profilePicPath) {
+        this.profilePicPath = profilePicPath;
     }
 
     /**
@@ -258,14 +302,8 @@ public class User {
         this.events = events;
     }
 
-	@Override
-	public String toString() {
-		return "User{" +
-				"username='" + username + '\'' +
-				", password='" + password + '\'' +
-				", profilePicPath='" + profilePic + '\'' +
-				", name='" + name + '\'' +
-				", events=" + events +
-				'}';
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return this.events.size();
 	}
 }

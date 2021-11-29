@@ -6,7 +6,6 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import application.Main;
-import application.model.EventList;
 import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,15 +53,14 @@ public class DashboardController implements Initializable {
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
-    	EventList eList = new EventList();
-    	eList.readEventList("data/exampleEvents.txt");
-    	for(int i = 0;i < eList.size();i++) {
+    	User.ACTIVE_USER.readEventList("data/exampleEvents.txt");
+    	for(int i = 0;i < User.ACTIVE_USER.getEvents().size();i++) {
     		int j = i;
-    		Label label = new Label(eList.getEvent(i).toString());
-    		label.setStyle("-fx-border-width: 2; -fx-border-radius: 2;-fx-border-color: #000000;-fx-font-size: 14;-fx-font-weight: bold;-fx-background-color: "+ eList.getEvent(i).getCategory().getColorHexCode() + ";");
+    		Label label = new Label(User.ACTIVE_USER.getEvent(i).toString());
+    		label.setStyle("-fx-border-width: 2; -fx-border-radius: 2;-fx-border-color: #000000;-fx-font-size: 14;-fx-font-weight: bold;-fx-background-color: "+ User.ACTIVE_USER.getEvent(i).getCategory().getColorHexCode() + ";");
     		label.setMinWidth(468);
     		label.setMinHeight(100);
-    		label.setOnMouseClicked(event -> deleteEvent(eList,label,j));
+    		label.setOnMouseClicked(event -> deleteEvent(User.ACTIVE_USER,label,j));
     		eventBox.getChildren().add(label);
     	}
     	profilePic.setImage(new Image("/images/" + User.ACTIVE_USER.getProfilePic()));
@@ -78,9 +76,16 @@ public class DashboardController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-    
+
     public void addEvent(ActionEvent event) {
-    	//TODO addEvents once the addEvent Scene and controller are completed.
+    	try {
+			Parent root = FXMLLoader.load(getClass().getResource("../view/EventCreation.fxml"));
+			Main.stage.setScene(new Scene(root, 800, 800));
+			Main.stage.show();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
     }
     public void logout(ActionEvent event) {
     	try {
@@ -92,14 +97,15 @@ public class DashboardController implements Initializable {
 			e.printStackTrace();
 		}	
     }
-    public void deleteEvent(EventList eList, Label label, int eventIndex){
+    public void deleteEvent(User ACTIVE_USER, Label label, int eventIndex){
     	ButtonType modify = new ButtonType("Modify",ButtonBar.ButtonData.OTHER);
     	
     	Alert alert = new Alert(AlertType.CONFIRMATION);
     	
+
     	alert.setHeaderText("Delete Confirmation");
     	
-    	alert.setContentText("Do you want to delete event- " + eList.getEvent(eventIndex).getTitle() + "?");
+    	alert.setContentText("Do you want to delete event- " + ACTIVE_USER.getEvent(eventIndex).getTitle() + "?");
     	alert.getButtonTypes().addAll(modify);
     	alert.getDialogPane().getChildren().forEach(node -> {
     	    if (node instanceof ButtonBar) {
@@ -114,20 +120,20 @@ public class DashboardController implements Initializable {
     	});
     	Optional<ButtonType> result = alert.showAndWait();
     	if (result.get() == ButtonType.OK){
-    		eList.removeEvent(eventIndex, "data/exampleEvents.txt");
-    		eList.addEventListToFile("data/exampleEvents.txt");
+    		ACTIVE_USER.removeEvent(eventIndex, "data/exampleEvents.txt");
+    		ACTIVE_USER.addEventListToFile("data/exampleEvents.txt");
     		eventBox.getChildren().clear();
-    		for(int i = 0;i < eList.size();i++) {
+    		for(int i = 0;i < User.ACTIVE_USER.getSize();i++) {
         		int j = i;
-    			Label label2 = new Label(eList.getEvent(i).toString());
-        		label2.setStyle("-fx-border-color: black;");
+    			Label label2 = new Label(User.ACTIVE_USER.getEvent(i).toString());
+    			label2.setStyle("-fx-border-width: 2; -fx-border-radius: 2;-fx-border-color: #000000;-fx-font-size: 14;-fx-font-weight: bold;-fx-background-color: "+ User.ACTIVE_USER.getEvent(j).getCategory().getColorHexCode() + ";");
         		label2.setMinWidth(468);
         		label2.setMinHeight(100);
-        		label2.setOnMouseClicked(event -> deleteEvent(eList,label2,j));
+        		label2.setOnMouseClicked(event -> deleteEvent(ACTIVE_USER,label2,j));
         		eventBox.getChildren().add(label2);
         		} 
     	} else if(result.get() == modify) {
-    		application.model.Event userEvent = eList.getEvent(eventIndex);
+    		application.model.Event userEvent = ACTIVE_USER.getEvent(eventIndex);
     		//System.out.println(eList.getEvent(eventIndex).toString());
     		try {
     			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ModifyEvent.fxml"));
