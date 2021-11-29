@@ -20,14 +20,26 @@ import java.util.Scanner;
  */
 public class User {
 
-    // Creating for testing purposes -- will be set based on Userpool generated from file
-    public static User ACTIVE_USER;
+    public static User ACTIVE_USER = new User();
 
     private String username;
     private String password;
     private String profilePic;
     private String name;
     private ArrayList<Event> events;
+
+	/**
+	 * Method: User
+	 * ---------------------
+	 * Empty constructor for the User class. Sets a default profile
+	 * picture and creates an empty list of events for the User.
+	 *
+	 * Returns: new User
+	 */
+	public User() {
+		this.profilePic = "avatar_0.png";
+		this.events = new ArrayList<>();
+	}
 
 	/**
 	 * Method: User
@@ -109,7 +121,7 @@ public class User {
     	return false;
     }
 
-    public static boolean createUser( String username, String password, String firstName, String lastName )
+    public static boolean createUser(String username, String password, String firstName, String lastName)
     {
     	File userFile = new File("data/" + username + ".txt");
     	try 
@@ -123,7 +135,7 @@ public class User {
 	    try 
 	    {
 	    	FileWriter writer = new FileWriter("data/users.txt", true);
-	    	writer.write( username + "," + password + "," + firstName + "," + lastName + "\n");
+	    	writer.write( username + "," + password + "," + firstName + "," + lastName + ",avatar_0.png\n");
 	    	writer.close();
 	    	return true;
 	    } catch (IOException e) {
@@ -157,7 +169,7 @@ public class User {
 	}
     public void addEventListToFile(String filename) {
 		try{
-			FileWriter fw = new FileWriter(filename, false);
+			FileWriter fw = new FileWriter("data/" + filename, false);
 			for(int i = 0;i < events.size();i++) {
 				fw.write( this.events.get(i).getTitle() + "#" + this.events.get(i).getDescription() + "#" + this.events.get(i).getLocation() + "#" + this.events.get(i).getDate() + "#" + this.events.get(i).getTime() + "#" + this.events.get(i).getCategory().getTitle() + "\n");
 			}
