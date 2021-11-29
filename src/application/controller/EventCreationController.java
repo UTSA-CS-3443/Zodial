@@ -71,6 +71,7 @@ public class EventCreationController implements EventHandler<MouseEvent> {
                         categoryChoices.getValue()
                 );
                 User.ACTIVE_USER.getEvents().add(newEvent);
+                User.ACTIVE_USER.addEventListToFile(User.ACTIVE_USER.getUsername() + ".txt");
             }
             root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
             Scene scene = new Scene(root);
