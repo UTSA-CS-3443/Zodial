@@ -20,7 +20,7 @@ public class Event {
 			this.location = location;
 			this.date = date;
 			this.time = time;
-			this.category = new EventCategory(categoryTitle);
+		//	this.category = new EventCategory(categoryTitle);
 			this.category = new EventCategory(categoryTitle);
 		}
 
@@ -81,10 +81,11 @@ public class Event {
 		public void setCategory(EventCategory category) {
 			this.category = category;
 		}
-
+		
 		@Override
 		public String toString() {
-			return this.getDate() + " " + this.getTime() + "\n" + this.getTitle() + "\n" + this.getDescription();
+			return this.getDate() + " " + this.getTime() + "\n" + this.getLocation() + "\n" + this.getTitle() + "\n" + this.getDescription();
 		}
+		
 	}
 

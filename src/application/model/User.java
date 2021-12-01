@@ -354,4 +354,6 @@ public class User {
 	public String toString() {
 		return username + "," + password + "," + name.replace(" ", ",") + "," + profilePic;
 	}
+
+	
 }

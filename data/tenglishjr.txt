@@ -1,3 +1,4 @@
-Christmas Dinner#Dinner with mom#12/26/2021#6:00 PM - 8:00 PM#Schertz, TX#Holiday
-Billy's Soccer Practice#Preparing for the big game#12/1/2021#3:00 PM - 4:00 PM#Soccer Center#Kids Activities
-Oil Change#Need it for the car#Walmart#11/30/2021#4:00 PM - 4:30 PM#Other
+Christmas Dinner#Dinner with mom#Schertz, TX#12/26/2021#6:00 PM - 8:00 PM#Holiday
+Billy's Soccer Practice#Preparing for the big game#Soccer Center#12/1/2021#3:00 PM - 4:00 PM#Kids Activities
+Oil Change#Need it for the car#4:00 PM - 4:30 PM#Walmart#11/30/2021#Other
+

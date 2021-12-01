@@ -125,8 +125,10 @@ public class DashboardController implements Initializable {
     	});
     	Optional<ButtonType> result = alert.showAndWait();
     	if (result.get() == ButtonType.OK){
-    		ACTIVE_USER.removeEvent(eventIndex, "data/exampleEvents.txt");
-    		ACTIVE_USER.addEventListToFile("data/exampleEvents.txt");
+    		//ACTIVE_USER.removeEvent(eventIndex, "data/exampleEvents.txt"); // testing out something right now - aylene
+    		User.ACTIVE_USER.removeEvent(eventIndex, ACTIVE_USER.getUsername() + ".txt");
+    		//ACTIVE_USER.addEventListToFile("data/exampleEvents.txt");  // testing out something right now - aylene
+    		//ACTIVE_USER.addEventListToFile(ACTIVE_USER.getUsername() + ".txt"); // taking out the addeventlist did nothing to each file so removing if that is okay? - aylene
     		eventBox.getChildren().clear();
     		for(int i = 0;i < User.ACTIVE_USER.getSize();i++) {
         		int j = i;
