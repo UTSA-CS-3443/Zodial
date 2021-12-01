@@ -57,6 +57,17 @@ public class User {
         this.events = new ArrayList<>();
     }
 
+    /**
+     * Method: validateUser
+     * -------------------------
+     * Checks if the inputed credentials match any of the users stored in the Users file.
+     * 
+     * 		@param username:		Username of a User.		
+     * 		@param password:		Password of a User.
+     * 		@param setActiveUser:	If the program should update the static variable, ACTIVE_USER.
+     * 
+     * Returns: Boolean statement.
+     */
     public static boolean validateUser( String username, String password, boolean setActiveUser )
     {
     	File userFile = new File( "data/users.txt");
@@ -118,7 +129,19 @@ public class User {
     	
     	return false;
     }
-
+    
+    /**
+     * Method: createUser
+     * ----------------------
+     * Creates a new User using the inputed credentials. Creates a file with username, and writes to the User's file.
+     * 
+     * 		@param username:		Username of a User.
+     * 		@param password:		Password of a User.
+     * 		@param firstName:		First name of a User.
+     * 		@param lastName:		Last name of a User.
+     * 
+     * Returns: If the method could successfully read and write to the files. (Boolean Statment)
+     */
     public static boolean createUser(String username, String password, String firstName, String lastName)
     {
     	File userFile = new File("data/" + username + ".txt");
@@ -147,7 +170,13 @@ public class User {
     }
     
     /**
-     * @param filename
+     * Method: readEventList
+     * -------------------------
+     * Reads all the events stored in a file.
+     * 
+     * 		@param filename:		The name of the file.
+     * 
+     * Returns: N/A
      */
     public void readEventList(String filename) {
 		try {
@@ -166,6 +195,16 @@ public class User {
 			e.printStackTrace();
 		}
 	}
+    
+    /**
+     * Method: addEventListToFile
+     * -----------------------------
+     * Updates the events file for a user.
+     * 
+     * 		@param filename: The name of the file.
+     * 
+     * Returns: N/A
+     */
     public void addEventListToFile(String filename) {
     	try{
 			FileWriter fw = new FileWriter("data/" + filename, false);
@@ -178,11 +217,32 @@ public class User {
 				e.printStackTrace();
 			}
 	}
+    
+    /**
+     * Method: removeEvent
+     * ----------------------
+     * Removes an event from a file.
+     * 
+     * 		@param index:		The index to remove.
+     * 		@param filename:	The name of the file to remove from.
+     * 
+     * Returns: N/A
+     */
     public void removeEvent(int index, String filename) {
 		events.remove(index);
 		addEventListToFile(filename);
 	}
 
+    
+    /**
+     * Method: updateProfilePicture
+     * -------------------------------
+     * Updates the contents of the User's file to contain a User's updated information.
+     * 
+     * 		@param newProfPicture:		The Path of the new Profile Picture.
+     * 
+     * Returns: N/A
+     */
 	public void updateProfilePicture(String newProfPicture) {
 		try {
 			String oldFile = "data/users.txt";
@@ -209,12 +269,19 @@ public class User {
 		}
 	}
 
+	/**
+	 * Method: getEvent
+	 * ------------------
+	 * Getter for an Event for a User.
+	 * 
+	 * 		@param index: The index of the event to retrieve.
+	 * 
+	 * Returns: A User's event.
+	 */
     public Event getEvent(int index) {
 		return this.events.get(index);
 	}
-    /**
-	 * @return an int of the size of the userEvents
-	 */
+    
     /**
      * Method: getUsername
      * ---------------
