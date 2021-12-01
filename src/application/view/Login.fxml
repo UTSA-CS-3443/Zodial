@@ -51,7 +51,7 @@
                </image>
             </ImageView>
             <Rectangle fx:id="promptBox" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="366.0" layoutX="254.0" layoutY="284.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" width="294.0" />
-            <TextField fx:id="loginEmailField" layoutX="283.0" layoutY="408.0" prefHeight="46.0" prefWidth="237.0" promptText="Email">
+            <TextField fx:id="loginEmailField" layoutX="283.0" layoutY="408.0" prefHeight="46.0" prefWidth="237.0" promptText="Username">
                <font>
                   <Font size="16.0" />
                </font>
@@ -94,7 +94,7 @@
                   <Image url="@../../images/personIcon.png" />
                </image>
             </ImageView>
-            <TextField fx:id="signupEmailField" layoutX="282.0" layoutY="375.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="Email">
+            <TextField fx:id="signupEmailField" layoutX="282.0" layoutY="375.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="Username">
                <font>
                   <Font size="16.0" />
                </font>
