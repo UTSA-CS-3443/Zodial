@@ -27,7 +27,7 @@ import javafx.scene.layout.VBox;
 /**
  *
  *
- * @author Daniel Martinez (abc123), TJ English (pcb408)
+ * @author Daniel Martinez (abc123), TJ English (pcb408) , Aylene Santillan (hrv061)
  */
 public class DashboardController implements Initializable {
 
@@ -137,7 +137,7 @@ public class DashboardController implements Initializable {
         		label2.setMinWidth(468);
         		label2.setMinHeight(100);
         		label2.setOnMouseClicked(event -> deleteEvent(ACTIVE_USER,label2,j));
-        		eventBox.getChildren().add(label2);
+        	//	eventBox.getChildren().add(label2);
         		} 
     	} else if(result.get() == modify) {
     		application.model.Event userEvent = ACTIVE_USER.getEvent(eventIndex);

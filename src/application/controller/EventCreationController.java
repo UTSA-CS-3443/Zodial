@@ -92,7 +92,7 @@ public class EventCreationController implements EventHandler<MouseEvent> {
      */
     @FXML
     public void initialize() {
-     //   categoryChoices.getItems().addAll(EventCategory.getAllCategories());
+    	categoryChoices.getItems().addAll(EventCategory.getAllCategories());
         categoryChoices.setValue("Personal");
     }
 
