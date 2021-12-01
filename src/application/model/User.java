@@ -60,12 +60,12 @@ public class User {
     public static boolean validateUser( String username, String password, boolean setActiveUser )
     {
     	File userFile = new File( "data/users.txt");
-    	try {
+    	/*try {
 			userFile.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	
+    	*/
     	try
 		{
 			BufferedReader fileReader = new BufferedReader( new FileReader( userFile ) );
@@ -156,7 +156,7 @@ public class User {
 			while(scan.hasNext()) {
 				String line = scan.nextLine();
 				String[] tokens = line.split("#");
-				Event event = new Event(tokens[0],tokens[1],tokens[4],tokens[2],tokens[3], tokens[5]);
+				Event event = new Event(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4], tokens[5]);
 
 				this.events.add(event);
 			}
@@ -167,7 +167,7 @@ public class User {
 		}
 	}
     public void addEventListToFile(String filename) {
-		try{
+    	try{
 			FileWriter fw = new FileWriter("data/" + filename, false);
 			for(int i = 0;i < events.size();i++) {
 				fw.write( this.events.get(i).getTitle() + "#" + this.events.get(i).getDescription() + "#" + this.events.get(i).getLocation() + "#" + this.events.get(i).getDate() + "#" + this.events.get(i).getTime() + "#" + this.events.get(i).getCategory().getTitle() + "\n");

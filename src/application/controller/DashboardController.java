@@ -27,7 +27,7 @@ import javafx.scene.layout.VBox;
 /**
  *
  *
- * @author Daniel Martinez (abc123), TJ English (pcb408) , Aylene Santillan (hrv061)
+ * @author Daniel Martinez (qmk154), TJ English (pcb408) , Aylene Santillan (hrv061)
  */
 public class DashboardController implements Initializable {
 
@@ -58,6 +58,8 @@ public class DashboardController implements Initializable {
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
+    	eventBox.getChildren().clear();
+    	User.ACTIVE_USER.getEvents().clear();
     	User.ACTIVE_USER.readEventList("data/" + User.ACTIVE_USER.getUsername() + ".txt");
     	for(int i = 0;i < User.ACTIVE_USER.getEvents().size();i++) {
     		int j = i;
@@ -125,9 +127,7 @@ public class DashboardController implements Initializable {
     	});
     	Optional<ButtonType> result = alert.showAndWait();
     	if (result.get() == ButtonType.OK){
-    		//ACTIVE_USER.removeEvent(eventIndex, "data/exampleEvents.txt"); // testing out something right now - aylene
     		User.ACTIVE_USER.removeEvent(eventIndex, ACTIVE_USER.getUsername() + ".txt");
-    		//ACTIVE_USER.addEventListToFile("data/exampleEvents.txt");  // testing out something right now - aylene
     		//ACTIVE_USER.addEventListToFile(ACTIVE_USER.getUsername() + ".txt"); // taking out the addeventlist did nothing to each file so removing if that is okay? - aylene
     		eventBox.getChildren().clear();
     		for(int i = 0;i < User.ACTIVE_USER.getSize();i++) {
@@ -137,11 +137,10 @@ public class DashboardController implements Initializable {
         		label2.setMinWidth(468);
         		label2.setMinHeight(100);
         		label2.setOnMouseClicked(event -> deleteEvent(ACTIVE_USER,label2,j));
-        	//	eventBox.getChildren().add(label2);
+        		eventBox.getChildren().add(label2);
         		} 
     	} else if(result.get() == modify) {
     		application.model.Event userEvent = ACTIVE_USER.getEvent(eventIndex);
-    		//System.out.println(eList.getEvent(eventIndex).toString());
     		try {
     			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ModifyEvent.fxml"));
     			Parent root = (Parent) loader.load();

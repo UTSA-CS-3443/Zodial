@@ -4,6 +4,7 @@ import application.Main;
 import application.model.Event;
 import application.model.EventCategory;
 import application.model.User;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +32,7 @@ import java.io.IOException;
  * UTSA CS 3443 - Zodial (Group Project)
  * Fall 2021
  */
-public class EventCreationController implements EventHandler<MouseEvent> {
+public class EventCreationController implements EventHandler<ActionEvent> {
 
     @FXML private TextField titleField;
     @FXML private TextField descriptionField;
@@ -41,7 +42,7 @@ public class EventCreationController implements EventHandler<MouseEvent> {
     @FXML private TextField timeEndField;
     @FXML private ComboBox<String> categoryChoices;
     @FXML private Button createButton;
-
+    @FXML private Button cancel;
     /**
      * Method: handle
      * ----------------
@@ -56,8 +57,7 @@ public class EventCreationController implements EventHandler<MouseEvent> {
      * Returns: N/A
      */
     @FXML
-    @Override
-    public void handle(MouseEvent event) {
+    public void handle(ActionEvent event) {
         try {
             Node clickedOption = (Node) event.getSource();
             Parent root;
@@ -81,7 +81,16 @@ public class EventCreationController implements EventHandler<MouseEvent> {
             e.printStackTrace();
         }
     }
-
+    public void cancel(ActionEvent event) {
+    	try {
+			Parent root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
+			Main.stage.setScene(new Scene(root, 800, 800));
+			Main.stage.show();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}	
+    }
     /**
      * Method: initialize
      * -----------------
