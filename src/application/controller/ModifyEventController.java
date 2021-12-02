@@ -5,6 +5,8 @@ import java.io.IOException;
 import application.Main;
 import application.model.Event;
 import application.model.EventCategory;
+import application.model.User;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,16 +16,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
-public class ModifyEventController implements EventHandler<MouseEvent> {
+
+public class ModifyEventController implements EventHandler<ActionEvent> {
 	@FXML private TextField titleField;
     @FXML private TextField descriptionField;
     @FXML private TextField dateField;
     @FXML private TextField timeStartField;
     @FXML private TextField timeEndField;
+    @FXML private TextField locationField;
     @FXML private ComboBox<String> categoryChoices;
     @FXML private Button createButton;
+    @FXML private Button cancelButton;
+
    
     /**
      * Method: handle
@@ -40,7 +45,7 @@ public class ModifyEventController implements EventHandler<MouseEvent> {
      */
     @FXML
     @Override
-    public void handle(MouseEvent event) {
+    public void handle(ActionEvent event) {
         try {
             Node clickedOption = (Node) event.getSource();
             Parent root;
@@ -48,12 +53,13 @@ public class ModifyEventController implements EventHandler<MouseEvent> {
                 Event newEvent = new Event(
                         titleField.getText().trim(),
                         descriptionField.getText().trim(),
+                        locationField.getText().trim(),
                         dateField.getText().trim(),
                         (timeStartField.getText().trim() + " - " + timeEndField.getText().trim()),
-                        "local",
                         categoryChoices.getValue()
                 );
-              //  User.ACTIVE_USER.getEvents().add(newEvent);
+                User.ACTIVE_USER.getEvents().add(newEvent);
+                User.ACTIVE_USER.addEventListToFile(User.ACTIVE_USER.getUsername() + ".txt");
             }
             root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
             Scene scene = new Scene(root);
@@ -63,7 +69,19 @@ public class ModifyEventController implements EventHandler<MouseEvent> {
             e.printStackTrace();
         }
     }
-
+    
+//(timeStartField.getText().trim() + " - " + timeEndField.getText().trim()), "local",
+    
+    public void cancel(ActionEvent event) {
+    	try {
+			Parent root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
+			Main.stage.setScene(new Scene(root, 800, 800));
+			Main.stage.show();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}	
+    }
     /**
      * Method: initialize
      * -----------------
@@ -82,7 +100,10 @@ public class ModifyEventController implements EventHandler<MouseEvent> {
     public void setEventData(Event event) {
     	titleField.setText(event.getTitle());
         descriptionField.setText(event.getDescription());
+        locationField.setText(event.getDate());
         dateField.setText(event.getDate());
+        timeStartField.setText(event.getDate());
+        timeEndField.setText(event.getDate());
     }
 
     /**
@@ -100,6 +121,7 @@ public class ModifyEventController implements EventHandler<MouseEvent> {
         if (
             !titleField.getText().isEmpty() &&
             !descriptionField.getText().isEmpty() &&
+            !locationField.getText().isEmpty() &&
             !dateField.getText().isEmpty() &&
             !timeStartField.getText().isEmpty() &&
             !timeEndField.getText().isEmpty()
