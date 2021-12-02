@@ -69,7 +69,7 @@ public class ProfilePictureController implements EventHandler<MouseEvent> {
                     }
                 }
 
-                User.ACTIVE_USER.setProfilePic("avatar_" + optionChosen + ".png");
+                User.ACTIVE_USER.updateProfilePicture("avatar_" + optionChosen + ".png");
             }
 
             Scene scene = new Scene(FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml")));

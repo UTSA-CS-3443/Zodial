@@ -70,7 +70,11 @@ public class User {
      */
     public static boolean validateUser( String username, String password, boolean setActiveUser )
     {
-    	File userFile = new File( "data/users.txt");
+//    	File dataDir = new File( "data");
+    	
+    	
+    	File userFile = new File("data/users.txt");
+    	
     	/*try {
 			userFile.createNewFile();
 		} catch (IOException e) {
@@ -96,7 +100,7 @@ public class User {
 					if( (inAccPassword.equals(password)))
 					{
 						passwordCorrect = true;	
-						String name = input.next() + input.next();
+						String name = input.next() + " " + input.next();
 						String profilePic = input.next();
 						
 						if( setActiveUser )
@@ -115,8 +119,6 @@ public class User {
 			}
 
 			fileReader.close();
-
-
 
 
 			return (userNameFound && passwordCorrect);
@@ -245,24 +247,25 @@ public class User {
      */
 	public void updateProfilePicture(String newProfPicture) {
 		try {
-			String oldFile = "data/users.txt";
-			FileReader fr = new FileReader(oldFile);
-			BufferedReader br = new BufferedReader(fr);
-			String line;
-
-			System.out.println("Did delete: " + new File(oldFile).delete());
-			File newUsersFile = new File(oldFile);
-			FileWriter fw = new FileWriter(newUsersFile);
-
-			while ((line = br.readLine()) != null) {
-				String[] tokens = line.split(",");
-				if (tokens[0].equalsIgnoreCase(User.ACTIVE_USER.getUsername())) {
-					tokens[4] = newProfPicture;
-				}
-				fw.write(tokens[0] + "," + tokens[1] + "," + tokens[2] + "," + tokens[3] + "," + tokens[4] + "\n");
+			String filePath = "data/users.txt";
+			Scanner sc = new Scanner(new File(filePath));
+			StringBuffer sb = new StringBuffer();
+			
+			while(sc.hasNextLine()) {
+				sb.append(sc.nextLine() + System.lineSeparator());
 			}
-			fr.close();
-			br.close();
+			sc.close();
+			
+			String usersFileContents = sb.toString();
+			String oldLine = User.ACTIVE_USER.toString();
+			User.ACTIVE_USER.setProfilePic(newProfPicture);
+			String newLine = User.ACTIVE_USER.toString();
+			
+			usersFileContents = usersFileContents.replaceAll(oldLine, newLine);
+			
+			FileWriter fw = new FileWriter(filePath);
+			fw.append(usersFileContents);
+			fw.flush();
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -353,7 +356,6 @@ public class User {
      */
     public void setProfilePic(String profilePic) {
         this.profilePic = profilePic;
-		updateProfilePicture(profilePic);
     }
 
     /**

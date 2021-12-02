@@ -127,7 +127,7 @@ public class LoginController implements EventHandler<ActionEvent>, Initializable
 					if( User.validateUser(inEmail, inPassword, false) )
 					{
 						clearLabels();
-						signupErrorLabel.setText("User all ready exists");
+						signupErrorLabel.setText("User already exists");
 					}
 					else
 					{
