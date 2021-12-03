@@ -35,16 +35,7 @@ public class DashboardController implements Initializable {
     private Button logoutButton;
 
     @FXML
-    private Button testButton;
-    
-    @FXML
-    private Pane deletePane;
-    
-    @FXML
-    private Button yesButton;
-    
-    @FXML
-    private Button cancelButton;
+    private Button addEventButton;
     
     @FXML
     private ImageView profilePic;
@@ -59,6 +50,7 @@ public class DashboardController implements Initializable {
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
     	eventBox.getChildren().clear();
+    	usernameLabel.setText(User.ACTIVE_USER.getUsername());
     	User.ACTIVE_USER.getEvents().clear();
     	User.ACTIVE_USER.readEventList("data/" + User.ACTIVE_USER.getUsername() + ".txt");
     	for(int i = 0;i < User.ACTIVE_USER.getEvents().size();i++) {
@@ -72,6 +64,7 @@ public class DashboardController implements Initializable {
     	}
     	usernameLabel.setText(User.ACTIVE_USER.getUsername());
     	profilePic.setImage(new Image("/images/" + User.ACTIVE_USER.getProfilePic()));
+    	usernameLabel.setText(User.ACTIVE_USER.getUsername());
     }
 
     @FXML
