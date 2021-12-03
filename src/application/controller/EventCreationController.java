@@ -14,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
@@ -70,6 +69,8 @@ public class EventCreationController implements EventHandler<ActionEvent> {
                         (timeStartField.getText().trim() + " - " + timeEndField.getText().trim()),
                         categoryChoices.getValue()
                 );
+                
+                
                 User.ACTIVE_USER.getEvents().add(newEvent);
                 User.ACTIVE_USER.addEventListToFile(User.ACTIVE_USER.getUsername() + ".txt");
             }
@@ -123,7 +124,8 @@ public class EventCreationController implements EventHandler<ActionEvent> {
             !dateField.getText().isEmpty() &&
             !locationField.getText().isEmpty() &&
             !timeStartField.getText().isEmpty() &&
-            !timeEndField.getText().isEmpty()
+            !timeEndField.getText().isEmpty() &&
+            !categoryChoices.getValue().isEmpty()
         )
             createButton.setDisable(false);
     }

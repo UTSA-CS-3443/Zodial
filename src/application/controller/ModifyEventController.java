@@ -1,11 +1,13 @@
 package application.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import application.Main;
 import application.model.Event;
 import application.model.EventCategory;
 import application.model.User;
+import application.controller.EventCreationController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -43,6 +45,9 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
      *
      * Returns: N/A
      */
+    
+
+    
     @FXML
     @Override
     public void handle(ActionEvent event) {
@@ -50,6 +55,7 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
             Node clickedOption = (Node) event.getSource();
             Parent root;
             if (!clickedOption.getId().equalsIgnoreCase("cancel")) {
+             
                 Event newEvent = new Event(
                         titleField.getText().trim(),
                         descriptionField.getText().trim(),
@@ -71,6 +77,7 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
     }
     
 //(timeStartField.getText().trim() + " - " + timeEndField.getText().trim()), "local",
+ //   (timeStartField.getText().trim() + " - " + timeEndField.getText().trim()),
     
     public void cancel(ActionEvent event) {
     	try {
@@ -100,10 +107,9 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
     public void setEventData(Event event) {
     	titleField.setText(event.getTitle());
         descriptionField.setText(event.getDescription());
-        locationField.setText(event.getDate());
+        locationField.setText(event.getLocation());
         dateField.setText(event.getDate());
-        timeStartField.setText(event.getDate());
-        timeEndField.setText(event.getDate());
+        //TODO: time set for both start and end time needs to be fixed here
     }
 
     /**
@@ -124,7 +130,8 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
             !locationField.getText().isEmpty() &&
             !dateField.getText().isEmpty() &&
             !timeStartField.getText().isEmpty() &&
-            !timeEndField.getText().isEmpty()
+            !timeEndField.getText().isEmpty() &&
+            !categoryChoices.getValue().isEmpty()
         )
             createButton.setDisable(false);
     }
