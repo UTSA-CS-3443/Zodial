@@ -70,6 +70,7 @@ public class DashboardController implements Initializable {
     		label.setOnMouseClicked(event -> deleteEvent(User.ACTIVE_USER,label,j));
     		eventBox.getChildren().add(label);
     	}
+    	usernameLabel.setText(User.ACTIVE_USER.getUsername());
     	profilePic.setImage(new Image("/images/" + User.ACTIVE_USER.getProfilePic()));
     }
 

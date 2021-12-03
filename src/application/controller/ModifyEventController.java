@@ -8,6 +8,7 @@ package application.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import application.Main;
 import application.model.Event;
@@ -42,18 +43,15 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
      * Method: handle
      * ----------------
      * Handles onClick events that occur in the view. When the user clicks on
-     * the Create or Cancel option in the view, the handle method will take
-     * the user back to the Dashboard. If Create is selected, a new Event
-     * is created and added to the user's list of events prior to being
+     * the Save or Cancel option in the view, the handle method will take
+     * the user back to the Dashboard. If Save is selected, the modified Event
+     * is saved and added to the user's list of events prior to being
      * navigated back to the dashboard.
      *
      *      @param event:   onClick event of a button/hyperlink in the view.
      *
      * Returns: N/A
      */
-    
-
-    
     @FXML
     @Override
     public void handle(ActionEvent event) {
@@ -70,7 +68,15 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
                         (timeStartField.getText().trim() + " - " + timeEndField.getText().trim()),
                         categoryChoices.getValue()
                 );
-                User.ACTIVE_USER.getEvents().add(newEvent);
+                ArrayList<Event> userEvents = User.ACTIVE_USER.getEvents();
+                for (Event userEvent : userEvents) {
+                	if (userEvent.getTitle().equalsIgnoreCase(newEvent.getTitle())) {
+                		userEvents.remove(userEvent);
+                		userEvents.add(newEvent);
+                		break;
+                	}
+                }
+                User.ACTIVE_USER.setEvents(userEvents);
                 User.ACTIVE_USER.addEventListToFile(User.ACTIVE_USER.getUsername() + ".txt");
             }
             root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
@@ -82,19 +88,6 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
         }
     }
     
-//(timeStartField.getText().trim() + " - " + timeEndField.getText().trim()), "local",
- //   (timeStartField.getText().trim() + " - " + timeEndField.getText().trim()),
-    
-    public void cancel(ActionEvent event) {
-    	try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
-			Main.stage.setScene(new Scene(root, 800, 800));
-			Main.stage.show();
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}	
-    }
     /**
      * Method: initialize
      * -----------------
@@ -110,6 +103,7 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
     	categoryChoices.getItems().addAll(EventCategory.getAllCategories());
         categoryChoices.setValue("Personal");
     }
+    
     public void setEventData(Event event) {
     	titleField.setText(event.getTitle());
         descriptionField.setText(event.getDescription());

@@ -15,6 +15,16 @@ public class Main extends Application {
 	
 	public static Stage stage;
 	
+	/**
+     * Method: start
+     * -------------
+     * Main entry point for the application. Initializes the primary stage.
+     *
+     *      @param primaryStage: The primary stage for this application, onto
+     *                           which the application scene can be set.
+     *
+     * Returns: N/A
+     */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -29,6 +39,13 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+     * Method: main
+     * ------------
+     * Launches the application GUI.
+     *
+     * Returns: N/A
+     */
 	public static void main(String[] args) {
 		launch(args);
 	}

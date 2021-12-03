@@ -41,7 +41,7 @@ public class EventCreationController implements EventHandler<ActionEvent> {
     @FXML private TextField timeEndField;
     @FXML private ComboBox<String> categoryChoices;
     @FXML private Button createButton;
-    @FXML private Button cancel;
+    
     /**
      * Method: handle
      * ----------------
@@ -82,16 +82,7 @@ public class EventCreationController implements EventHandler<ActionEvent> {
             e.printStackTrace();
         }
     }
-    public void cancel(ActionEvent event) {
-    	try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
-			Main.stage.setScene(new Scene(root, 800, 800));
-			Main.stage.show();
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}	
-    }
+
     /**
      * Method: initialize
      * -----------------

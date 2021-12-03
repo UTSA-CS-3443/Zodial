@@ -14,7 +14,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3f3f3f" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
       <ImageView fitHeight="52.0" fitWidth="46.0" layoutX="23.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../data/logo.png" />
+            <Image url="@../../images/logo.png" />
          </image>
       </ImageView>
       <AnchorPane layoutY="60.0" prefHeight="740.0" prefWidth="800.0">
@@ -61,7 +61,7 @@
                         <Font name="System Bold" size="21.0" />
                      </font>
                   </Button>
-                  <Hyperlink fx:id="cancelLink" layoutX="196.0" layoutY="441.0" onAction="#cancel" text="Cancel" textFill="#3f3f3f" visited="true">
+                  <Hyperlink id="cancel" fx:id="cancelLink" layoutX="196.0" layoutY="441.0" onAction="#handle" text="Cancel" textFill="#3f3f3f" visited="true">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

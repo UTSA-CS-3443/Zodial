@@ -13,7 +13,7 @@
    <children>
       <Label layoutX="389.0" layoutY="110.0" prefHeight="68.0" prefWidth="193.0" text="zodial.">
          <font>
-            <Font name="Dubai Regular" size="74.0" />
+            <Font size="74.0" />
          </font>
       </Label>
       <ImageView fitHeight="139.0" fitWidth="131.0" layoutX="231.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
@@ -168,7 +168,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="signupSubLastNameField" layoutX="282.0" layoutY="489.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="First Name">
+            <TextField fx:id="signupSubLastNameField" layoutX="282.0" layoutY="489.0" onAction="#handle" prefHeight="46.0" prefWidth="237.0" promptText="Last Name">
                <font>
                   <Font size="16.0" />
                </font>
