@@ -35,16 +35,7 @@ public class DashboardController implements Initializable {
     private Button logoutButton;
 
     @FXML
-    private Button testButton;
-    
-    @FXML
-    private Pane deletePane;
-    
-    @FXML
-    private Button yesButton;
-    
-    @FXML
-    private Button cancelButton;
+    private Button addEventButton;
     
     @FXML
     private ImageView profilePic;
@@ -71,6 +62,7 @@ public class DashboardController implements Initializable {
     		eventBox.getChildren().add(label);
     	}
     	profilePic.setImage(new Image("/images/" + User.ACTIVE_USER.getProfilePic()));
+    	usernameLabel.setText(User.ACTIVE_USER.getUsername());
     }
 
     @FXML
