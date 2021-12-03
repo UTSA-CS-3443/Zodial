@@ -1,5 +1,5 @@
 # Zodial
-######Created by: Team Zodial
+###### Created by: Team Zodial
 
 <b>Zodial</b> is a planner application that was created to make planning and staying on track easier!
 
@@ -8,12 +8,12 @@ To utilize the application, all that is needed is the use of GitHub, Eclipse, Ja
 
 ***
 
-#####Technology Requirements:
+##### Technology Requirements:
 - Java 9
 - JavaFX
 - Eclipse
 
-#####To access and run Zodial: 
+##### To access and run Zodial: 
 - clone the <b>Zodial</b> repository from GitHub 
 - open the repository in Eclipse
 - ensure that both Java 9 and JavaFX are included in the build path
