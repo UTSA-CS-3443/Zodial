@@ -59,7 +59,7 @@
                         <Font name="System Bold" size="21.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="titleField" layoutX="185.0" layoutY="18.0" onMouseExited="#enableCreateButton" prefHeight="42.0" prefWidth="329.0" promptText="Oil Change" style="-fx-background-color: white;">
+                  <TextField fx:id="titleField" disable="true" layoutX="185.0" layoutY="18.0" onMouseExited="#enableCreateButton" prefHeight="42.0" prefWidth="329.0" promptText="Oil Change" style="-fx-background-color: white;">
                      <font>
                         <Font size="18.0" />
                      </font>

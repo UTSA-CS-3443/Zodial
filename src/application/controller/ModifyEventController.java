@@ -8,6 +8,7 @@ package application.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import application.Main;
@@ -113,6 +114,7 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
      */
     public void setEventData(Event event) {
     	String[] times = event.getTime().split("-");
+    	
     	titleField.setText(event.getTitle());
         descriptionField.setText(event.getDescription());
         locationField.setText(event.getLocation());
