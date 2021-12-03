@@ -82,9 +82,6 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
         }
     }
     
-//(timeStartField.getText().trim() + " - " + timeEndField.getText().trim()), "local",
- //   (timeStartField.getText().trim() + " - " + timeEndField.getText().trim()),
-    
     public void cancel(ActionEvent event) {
     	try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
@@ -104,18 +101,29 @@ public class ModifyEventController implements EventHandler<ActionEvent> {
      * Returns: N/A
      */
     @FXML
-    public void initialize() {
-    	//System.out.println(userEvent)
-       
+    public void initialize() {       
     	categoryChoices.getItems().addAll(EventCategory.getAllCategories());
         categoryChoices.setValue("Personal");
+        
     }
+    
+    /**
+     * Method: setEventData
+     * -----------------
+     * Sets the data of the event that is being modified
+     * 
+     *
+     * Returns: N/A
+     */
+    
     public void setEventData(Event event) {
+    	String[] times = event.getTime().split(" - ");
     	titleField.setText(event.getTitle());
         descriptionField.setText(event.getDescription());
         locationField.setText(event.getLocation());
         dateField.setText(event.getDate());
-        //TODO: time set for both start and end time needs to be fixed here
+        timeStartField.setText(times[0]);
+        timeEndField.setText(times[1]);
     }
 
     /**
