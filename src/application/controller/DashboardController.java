@@ -50,6 +50,7 @@ public class DashboardController implements Initializable {
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
     	eventBox.getChildren().clear();
+    	usernameLabel.setText(User.ACTIVE_USER.getUsername());
     	User.ACTIVE_USER.getEvents().clear();
     	User.ACTIVE_USER.readEventList("data/" + User.ACTIVE_USER.getUsername() + ".txt");
     	for(int i = 0;i < User.ACTIVE_USER.getEvents().size();i++) {
