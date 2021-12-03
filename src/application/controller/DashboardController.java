@@ -25,9 +25,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
- *
+ * The DashboardController class is the primary controller dedicated to the
+ * Dashboard view of the application. When the Dashboard scene is staged,
+ * the initialize method populates the profile picture and username of the 
+ * logged-in user, as well as displays any and all events for the user. From
+ * this view, the user is able to perform most actions available in the Zodial
+ * application, including Event handling & account customization.
  *
  * @author Daniel Martinez (qmk154), TJ English (pcb408) , Aylene Santillan (hrv061)
+ * UTSA CS 3443 - Zodial (Group Project)
+ * Fall 2021
  */
 public class DashboardController implements Initializable {
 
@@ -46,7 +53,15 @@ public class DashboardController implements Initializable {
     @FXML
     private VBox eventBox; 
     
-    
+    /**
+     * Method: initialize
+     * -----------------
+     * Populates the profile picture and username of the 
+     * logged-in user, as well as displays any and all events 
+     * for the user. 
+     *
+     * Returns: N/A
+     */
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
     	eventBox.getChildren().clear();
@@ -67,6 +82,13 @@ public class DashboardController implements Initializable {
     	usernameLabel.setText(User.ACTIVE_USER.getUsername());
     }
 
+    /**
+     * Method: launchPictureSelector
+     * -----------------
+     * Takes the user to the Profile Picture Selection view. 
+     *
+     * Returns: N/A
+     */
     @FXML
 	private void launchPictureSelector() {
 		try {
@@ -78,6 +100,13 @@ public class DashboardController implements Initializable {
 		}
 	}
 
+    /**
+     * Method: addEvent
+     * -----------------
+     * Takes the user to the Event Creation view. 
+     *
+     * Returns: N/A
+     */
     public void addEvent(ActionEvent event) {
     	try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/EventCreation.fxml"));
@@ -88,6 +117,14 @@ public class DashboardController implements Initializable {
 			e.printStackTrace();
 		}
     }
+    
+    /**
+     * Method: logout
+     * -----------------
+     * Invalidates the ACTIVE_USER and navigates back to the Home page.
+     *
+     * Returns: N/A
+     */
     public void logout(ActionEvent event) {
     	try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/Login.fxml"));
@@ -98,6 +135,14 @@ public class DashboardController implements Initializable {
 			e.printStackTrace();
 		}	
     }
+    
+    /**
+     * Method: deleteEvent
+     * -----------------
+     * Removes the selected event from the user's list of events.
+     *
+     * Returns: N/A
+     */
     public void deleteEvent(User ACTIVE_USER, Label label, int eventIndex){
     	ButtonType modify = new ButtonType("Modify",ButtonBar.ButtonData.OTHER);
     	
